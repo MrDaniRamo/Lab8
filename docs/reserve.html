@@ -80,6 +80,47 @@
 
 <!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
 <script type="text/javascript">
+  $("#success-alert").hide();
+  $("#lleno-alert").hide();
 
+$(".submit").on("click", function(event) {
+  event.preventDefault();
+
+  // Elementos del form
+  var newReservation = {
+    customerName: $("#reserve-name").val().trim(),
+    phoneNumber: $("#reserve-phone").val().trim(),
+    customerEmail: $("#reserve-email").val().trim()
+  };
+
+  console.log(newReservation);
+
+  $.post("/api/tables", newReservation,
+    function(data) {
+
+      // Si hay disponible, alertar de exito
+      if (data) {
+        $("#success-alert").fadeTo(3000, 500).slideUp(500, function() {
+        $("#success-alert").slideUp(500);
+        });
+      }
+
+      //Si no hay disponible, decir que estan en lista de espera
+      else {
+       
+      $("#lleno-alert").fadeTo(3000, 500).slideUp(500, function() {
+        $("#lleno-alert").slideUp(500);
+      });
+
+          }
+
+          // Limpiar formulario despues de enviar
+          $("#reserve-name").val("");
+          $("#reserve-phone").val("");
+          $("#reserve-email").val("");
+
+   });
+
+});
 
 </script>
