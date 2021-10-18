@@ -35,7 +35,7 @@ app.get("/", function(req, res) {
 
   // Displays Tables
 app.get("/api/tables", function(req, res) {
-    return res.json(tables;
+    return res.json(tables);
   });
 
   // Displays waiting list
