@@ -80,8 +80,8 @@
 
 <!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
 <script type="text/javascript">
-  $("#success-alert").hide();
-  $("#lleno-alert").hide();
+ $("#success-alert").hide();
+ $("#lleno-alert").hide();
 
 $(".submit").on("click", function(event) {
   event.preventDefault();
@@ -97,7 +97,6 @@ $(".submit").on("click", function(event) {
 
   $.post("/api/tables", newReservation,
     function(data) {
-
       // Si hay disponible, alertar de exito
       if (data) {
         $("#success-alert").fadeTo(3000, 500).slideUp(500, function() {

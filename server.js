@@ -45,38 +45,36 @@ app.get("/api/waitlist", function(req, res) {
 
 // Reserve table - takes in JSON input
 app.post("/api/tables", function(req, res) {
+   
     // req.body hosts is equal to the JSON post sent from the user
     // This works because of our body parsing middleware
     var newReservation = req.body;
   
     // Using a RegEx Pattern to remove spaces from newCharacter
     // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-    newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
   
     console.log(newReservation);
-  
-    characters.push(newReservation);
-  
+    if (tables.length < 5){
+     tables.push(newReservation);
+    }
+    else {
+     waitlist.push(newReservation);
+     
+    }
     res.json(newReservation);
+    
   });
 
-// Add to waiting list - takes in JSON input
-app.post("/api/waitlist", function(req, res) {
-    // req.body hosts is equal to the JSON post sent from the user
-    // This works because of our body parsing middleware
-    var newwait = req.body;
-  
-    // Using a RegEx Pattern to remove spaces from newCharacter
-    // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-    newtable.routeName = newwait.name.replace(/\s+/g, "").toLowerCase();
-  
-    console.log(newwait);
-  
-    characters.push(newwait);
-  
-    res.json(newwait);
-  });
+  //clears tables
+  app.post("/api/clear", function(req,res) {
 
+    var newclear = req.body;
+  
+    tables.push(newclear);
+    waitlist.push(newclear);
+  
+    res.json(newclear);
+  });
 
 // Starts the server to begin listening
 // =============================================================
