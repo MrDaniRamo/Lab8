@@ -35,12 +35,12 @@ app.get("/", function(req, res) {
 
   // Displays Tables
 app.get("/api/tables", function(req, res) {
-    return res.json(characters);
+    return res.json(tables;
   });
 
   // Displays waiting list
 app.get("/api/waitlist", function(req, res) {
-    return res.json(characters);
+    return res.json(waitlist);
   });
 
 // Reserve table - takes in JSON input
