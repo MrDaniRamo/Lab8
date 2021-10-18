@@ -70,9 +70,9 @@ app.post("/api/tables", function(req, res) {
 
     var newclear = req.body;
   
-    tables.push(newclear);
-    waitlist.push(newclear);
-  
+    tables = [];
+    waitlist = [];
+    
     res.json(newclear);
   });
 
