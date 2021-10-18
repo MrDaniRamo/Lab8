@@ -13,9 +13,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //set up variables
-var tables =[{}];
+var tables =[];
 
-var waitlist =[{}];
+var waitlist =[];
 
 // Routes
 // =============================================================
